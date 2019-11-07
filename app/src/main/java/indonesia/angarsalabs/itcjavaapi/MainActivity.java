@@ -1,6 +1,8 @@
 package indonesia.angarsalabs.itcjavaapi;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -22,6 +24,9 @@ public class MainActivity extends AppCompatActivity implements JadwalListener{
 
     @Override
     public void onSuccess(List<EventsItem> items) {
+        RecyclerView recyclerView = findViewById(R.id.rc_event);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(new EventAdapter(items));
         for(int i = 0;i < items.size(); i++){
             Log.i("ISI DATA", items.get(i).getStrEvent());
         }
